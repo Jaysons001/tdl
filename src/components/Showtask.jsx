@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Checkbox } from "@chakra-ui/react";
 import React from "react";
 
 const Showtask = ({ task, deleteTask, index, checkTask, done }) => {
@@ -6,15 +6,9 @@ const Showtask = ({ task, deleteTask, index, checkTask, done }) => {
 
   return (
     <Box display={"flex"} justifyContent={"space-between"} mb={"20px"}>
-      <Box
-        display={"flex"}
-        textAlign={"left"}
-        onClick={() => checkTask(index)}
-        w={"100%"}
-        style={{ cursor: "pointer" }}>
-        <p style={{ marginRight: "10px" }}>{index + 1}.</p>
+      <Checkbox colorScheme="green" isChecked={done} onChange={() => checkTask(index)}>
         <p style={{ textDecoration: done ? "line-through" : "none" }}>{task.split("||")[0]}</p>
-      </Box>
+      </Checkbox>
       <button onClick={() => deleteTask(index)}>x</button>
     </Box>
   );
